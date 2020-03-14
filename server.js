@@ -5,7 +5,7 @@ const server = require('http').Server(app)
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const router = require('./network/routers')
-const dataBase = require('./db')
+//const dataBase = require('./db')
 
 //dataBase.connect()
 
