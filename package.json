@@ -1,0 +1,22 @@
+{
+  "name": "hydroponic_js",
+  "version": "1.0.0",
+  "description": "Hydroponic project in NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathan1033739673/Hydroponic_JS.git"
+  },
+  "author": "Jonathan Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathan1033739673/Hydroponic_JS/issues"
+  },
+  "homepage": "https://github.com/jonathan1033739673/Hydroponic_JS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
