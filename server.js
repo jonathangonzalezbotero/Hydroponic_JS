@@ -11,10 +11,10 @@ dataBase.connect()
 
 app.use(cors())
 app.use(bodyParser.json())
-app.set('port', process.env.port || 4000)
+app.set('port', process.env.PORT || 4000)
 app.use('/', express.static('public'))
 router(app)
 
-server.listen(app.get('port') || 3000, () =>{
+server.listen(app.get('port'), () =>{
   console.log(`La aplicacion esta escuchando en ${app.get('port')}`);
 })
