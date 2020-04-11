@@ -6,12 +6,7 @@ const mySchema = new Schema({
   identification: String,
   firstName: String,
   lastName: String,
-  profile: String,
-  product: [{
-    type: Schema.ObjectId,
-    quantity: String,
-    ref: 'Product'
-  }]
+  profile: String
 })
 
 const model = mongoose.model('User', mySchema)
