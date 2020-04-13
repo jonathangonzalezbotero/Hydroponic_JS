@@ -4,7 +4,6 @@
   "description": "Hydroponic project in NodeJS",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +20,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.4"
+  },
+  "engines": {
+    "node": "12.14.x"
   }
 }
