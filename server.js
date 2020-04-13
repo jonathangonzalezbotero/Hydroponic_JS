@@ -12,7 +12,8 @@ dataBase.connect()
 app.use(cors())
 app.use(bodyParser.json())
 app.set('port', process.env.PORT || 3000)
-app.use('/', express.static('public'))
+//app.use('/', express.static('public'))
+app.use(express.static(__dirname + '/public'));
 router(app)
 
 server.listen(app.get('port'), () =>{
