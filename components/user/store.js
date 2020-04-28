@@ -1,19 +1,23 @@
 const Model = require('./model')
-const Product = require('../product/model')
-const User = require('../user/model')
+const bcrypt = require('bcryptjs')
 
 async function addUser(user){
   const myUser = new Model(user)
   return await myUser.save()
 }
 
-async function getUser(idUser){
-  let filter = {}
-  if (idUser)
-    filter = {
-      identification: idUser
-    }
-  return await Model.findOne(filter)
+async function authenticate(email, password) {
+  const user = await Model.findOne({email})
+  if (user && bcrypt.compareSync(password, user.password)) {
+      const { password, ...userWithoutHash } = user.toObject();
+      return await {
+          ...userWithoutHash
+      };
+  }
+}
+
+async function getUser(identification){
+  return await Model.findOne({identification})
 }
 
 async function getAllUsers(){
@@ -32,6 +36,7 @@ async function deleteUser(identification){
 
 module.exports = {
   addUser,
+  authenticate,
   getUser,
   getAllUsers,
   updateUser,

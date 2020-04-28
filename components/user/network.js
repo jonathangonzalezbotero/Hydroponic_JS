@@ -3,9 +3,9 @@ const response = require('../../network/response')
 const controller = require('./controller')
 const router = express.Router()
 
-router.post('/', function(req, res){
+router.post('/signup/', function(req, res){
   controller
-    .addUser(req.body.identification, req.body.firstName, req.body.lastName, req.body.profile)
+    .addUser(req.body.identification, req.body.firstName, req.body.lastName, req.body.profile, req.body.email, req.body.password)
     .then((user) => {
       response.success(req, res, user)
     })
@@ -14,10 +14,20 @@ router.post('/', function(req, res){
     })
 });
 
-router.get('/', function(req, res){
-  const identification = req.query.identification
+router.get('/signin/', function(req, res){
   controller
-    .getUser(identification)
+    .signIn(req.body.email, req.body.password)
+    .then((user) => {
+      response.success(req, res, user)
+    })
+    .catch((mensaje) => {
+      response.error(req, res, mensaje,`Could not get the user [email]: ${req.body.email}`);
+    })
+});
+
+router.get('/', function(req, res){
+  controller
+    .getUser(req.body.identification)
     .then((user) => {
       response.success(req, res, user)
     })
@@ -29,7 +39,7 @@ router.get('/', function(req, res){
 router.patch('/:identification', function(req, res){
   const identification = req.params.identification
   controller
-    .updateUser(identification, req.body.firstName, req.body.lastName)
+    .updateUser(identification, req.body.firstName, req.body.lastName, req.body.email, req.body.password)
     .then((user) => {
       response.success(req, res, user)
     })
